@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vendors/jquery.js"></script>
+    <script src="scripts/client.js"></script>
+    <link rel="stylesheet" href="style/styles.css">
+    <title>Majid's To Do List</title>
+</head>
+<body>
+    <header>
+        <div>
+        <h1>
+            MAJID'S APP FOR TO DO'S
+        </h1>
+
+    </div>
+    </header>
+    <section id="add-to-do">
+        <h3> Add to List </h3>
+        <input type="text" id="list-in" value="" placeholder="To-Do">
+        <button type="button" id="add-btn">SUBMIT</button>
+    </section>
+
+    <section>
+        <h2>WHAT YOU HAVE/NEED/WANT TO DO</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>To-Do(s)</th>
+                    <th>Status</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="listToDo"></tbody>
+        </table>
+    </section>
+</body>
+</html>
