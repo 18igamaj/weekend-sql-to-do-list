@@ -35,7 +35,19 @@ router.post('/', (req,res) => {
 });
 
 
-
+router.put('/:id', (req,res) => {
+    let idUp = req.params.id
+    let queryText = `UPDATE "our_toDos" SET "status" = '1'
+    WHERE "id" = $1;`
+    pool.query(queryText, [idUp])
+    .then(result => {
+        console.log('Our task up to date', result.rows)
+        res.sendStatus(200)
+    }).catch(error => {
+        console.log('Our query', queryText, 'error', error);
+        res.sendStatus(500);
+    })
+})
 
 
 

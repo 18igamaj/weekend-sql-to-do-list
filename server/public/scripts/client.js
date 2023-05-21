@@ -21,6 +21,7 @@ function postTD(){
         }
     }).then(function(response){
         console.log(response)
+        $('#list-in').val('');
         getTD();
     }).catch(function(error){
         console.log(error)
@@ -52,15 +53,31 @@ function renderDom(array){
 
         <tr id="${item.id}"data-id=${item.id}>
             <td>${item.todo}</td>
-            <td><button class= "comp-btn">Complete</button></td> 
+            <td ><button class= "comp-btn" >Complete</button></td> 
             <td><button class= "del-btn">Delete</button></td>
         </tr>
         
-        `)
+        `);
+        if(item.status === true){
+            $(`#${item.id}`).css("background-color", "green")
+        }
+       
     }
 }
 
 function putTD() {
 console.log('our put TD is clicked')
-
+let idUp = $(this).closest('tr').data('id')
+console.log(idUp);
+$.ajax({
+    method: 'PUT',
+    url: `/doList/${idUp}`
+}).then(function (response){
+    console.log(response)
+    getTD()
+}).catch(function (error){
+    console.log(error)
+})
 }
+
+
