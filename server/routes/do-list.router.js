@@ -6,8 +6,7 @@ const pool = require('../modules/pool')
 
 
 router.get('/', (req,res) => {
-    let queryText = `SELECT * FROM "our_toDos" 
-    ORDER BY "id" ASC;`;
+    let queryText = `SELECT * FROM "our_toDos" `;
     pool.query(queryText).then((result) => {
         res.send(result.rows);
         console.log('sending over rows', result.rows);
@@ -50,7 +49,18 @@ router.put('/:id', (req,res) => {
 })
 
 
+router.delete('/:id',(req,res) => {
+    let idDel = req.params.id;
+    let queryText = `DELETE FROM "our_toDos" WHERE "id" = $1`;
 
+    pool.query(queryText, [idDel]).then((result) => {
+        console.log('removed our task', result.rows);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error with our delete', error)
+        res.sendStatus(500)
+    })
+})
 
 
 

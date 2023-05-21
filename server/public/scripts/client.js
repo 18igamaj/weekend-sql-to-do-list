@@ -4,6 +4,7 @@ $(document).ready(function (){
     console.log('Yay client works!')
     $('#add-btn').on('click', postTD)
     $('#listToDo').on('click','.comp-btn', putTD)
+    $('#listToDo').on('click','.del-btn', delTD)
     getTD()
 });
 
@@ -80,4 +81,6 @@ $.ajax({
 })
 }
 
-
+function delTD(){
+    
+}
