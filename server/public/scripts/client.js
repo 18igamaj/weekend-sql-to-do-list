@@ -82,5 +82,14 @@ $.ajax({
 }
 
 function delTD(){
-    
+    const idDel = $(this).closest('tr').data('id')
+
+    $.ajax({
+        type: 'DELETE',
+        url: `/doList/${idDel}`
+    }).then(function (response){
+        getTD()
+    }).catch(function (error){
+        console.log('Error with Del', error)
+    })
 }
