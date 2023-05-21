@@ -83,8 +83,19 @@ $.ajax({
 
 function delTD(){
     const idDel = $(this).closest('tr').data('id')
-
-    $.ajax({
+    swal({
+        title: "Did you actually finish?",
+        text: "Once deleted, you will never be able to do this task again!",
+        icon: "LETS GO",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("YAY! Way to finish your task!", {
+            icon: "success",
+          });
+           $.ajax({
         type: 'DELETE',
         url: `/doList/${idDel}`
     }).then(function (response){
@@ -92,4 +103,9 @@ function delTD(){
     }).catch(function (error){
         console.log('Error with Del', error)
     })
+        } else {
+          swal("GO and FINISH IT!");
+        }
+      });
+   
 }
