@@ -3,7 +3,7 @@ console.log('js');
 $(document).ready(function (){
     console.log('Yay client works!')
     $('#add-btn').on('click', postTD)
-    $('#istToDo').on('click','.comp-btn', putTD)
+    $('#listToDo').on('click','.comp-btn', putTD)
     getTD()
 });
 
@@ -60,4 +60,7 @@ function renderDom(array){
     }
 }
 
+function putTD() {
+console.log('our put TD is clicked')
 
+}
